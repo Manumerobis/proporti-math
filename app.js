@@ -189,6 +189,29 @@ class ProportionMathApp {
         this.showNotification('Bienvenue dans ProportionMath ! 🎉', 'success');
     }
 
+    setInitialFocus(container) {
+        const first = container.querySelector(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (first) first.focus();
+    }
+
+    handleOptionKeydown(e) {
+        const options = Array.from(document.querySelectorAll('.option-btn'));
+        const index = options.indexOf(document.activeElement);
+        if (e.key === 'ArrowRight') {
+            const next = options[(index + 1) % options.length];
+            next?.focus();
+            e.preventDefault();
+        } else if (e.key === 'ArrowLeft') {
+            const prev = options[(index - 1 + options.length) % options.length];
+            prev?.focus();
+            e.preventDefault();
+        } else if (e.key === 'Enter' && index >= 0) {
+            options[index].click();
+        }
+    }
+
     setupEventListeners() {
         // Navigation
         document.querySelectorAll('.back-btn').forEach(btn => {
@@ -272,7 +295,8 @@ class ProportionMathApp {
 
     navigateTo(pageId) {
         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-        document.getElementById(pageId)?.classList.add('active');
+        const page = document.getElementById(pageId);
+        page?.classList.add('active');
         this.currentPage = pageId;
 
         if (pageId === 'module1') {
@@ -283,13 +307,18 @@ class ProportionMathApp {
         } else if (pageId === 'dashboard') {
             this.updateDashboard();
         }
+
+        if (page) {
+            this.setInitialFocus(page);
+        }
     }
 
     showActivity(activityId) {
         document.querySelectorAll('.activity-container').forEach(container => {
             container.classList.remove('active');
         });
-        document.getElementById(activityId)?.classList.add('active');
+        const container = document.getElementById(activityId);
+        container?.classList.add('active');
 
         // Mettre à jour les points de progression
         const activityNumber = parseInt(activityId.split('-')[1]);
@@ -301,6 +330,10 @@ class ProportionMathApp {
                 dot.classList.add('active');
             }
         });
+
+        if (container) {
+            this.setInitialFocus(container);
+        }
     }
 
     initializeGame() {
@@ -321,6 +354,9 @@ class ProportionMathApp {
             btn.disabled = false;
             btn.style.opacity = '1';
         });
+
+        const container = document.getElementById('activity1-1');
+        if (container) this.setInitialFocus(container);
     }
 
     checkGameAnswer(userAnswer) {
@@ -468,6 +504,11 @@ class ProportionMathApp {
             button.addEventListener('click', () => this.checkExerciseAnswer(index));
             optionsContainer.appendChild(button);
         });
+
+        this.setInitialFocus(optionsContainer);
+        optionsContainer.removeEventListener('keydown', this.optionKeyHandler);
+        this.optionKeyHandler = (e) => this.handleOptionKeydown(e);
+        optionsContainer.addEventListener('keydown', this.optionKeyHandler);
         
         document.getElementById('exerciseFeedback').innerHTML = '';
         document.getElementById('nextExercise').style.display = 'none';
