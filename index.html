@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProportionMath - Apprendre la Proportionnalité en 6e</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>🧮 ProportionMath</h1>
+        </div>
+        <div class="nav-user">
+            <div class="user-stats">
+                <span class="xp-badge">⭐ <span id="userXP">0</span> XP</span>
+                <span class="level-badge">Niveau <span id="userLevel">1</span></span>
+            </div>
+            <div class="user-avatar" id="userAvatar">👦</div>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <!-- Page d'accueil -->
+        <section id="homepage" class="page active">
+            <div class="hero-section">
+                <h1>Bienvenue dans l'univers de la Proportionnalité !</h1>
+                <p class="hero-subtitle">Découvre, explore et maîtrise la proportionnalité à travers 5 modules passionnants</p>
+                
+                <div class="progress-overview">
+                    <h3>Ta progression globale</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="globalProgress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text"><span id="progressPercent">0</span>% complété</span>
+                    </div>
+                </div>
+
+                <div class="modules-grid">
+                    <div class="module-card" data-module="1">
+                        <div class="module-icon">🔍</div>
+                        <h3>Module 1</h3>
+                        <h4>Découverte et Reconnaissance</h4>
+                        <p>Apprends à distinguer les situations proportionnelles</p>
+                        <div class="module-progress">
+                            <div class="progress-bar mini">
+                                <div class="progress-fill" data-progress="1" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary">Commencer</button>
+                    </div>
+
+                    <div class="module-card" data-module="2">
+                        <div class="module-icon">⚖️</div>
+                        <h3>Module 2</h3>
+                        <h4>Propriétés de Linéarité</h4>
+                        <p>Maîtrise les propriétés additives et multiplicatives</p>
+                        <div class="module-progress">
+                            <div class="progress-bar mini">
+                                <div class="progress-fill" data-progress="2" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                    </div>
+
+                    <div class="module-card" data-module="3">
+                        <div class="module-icon">🎯</div>
+                        <h3>Module 3</h3>
+                        <h4>Passage par l'Unité</h4>
+                        <p>Résous par la méthode du passage à l'unité</p>
+                        <div class="module-progress">
+                            <div class="progress-bar mini">
+                                <div class="progress-fill" data-progress="3" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                    </div>
+
+                    <div class="module-card" data-module="4">
+                        <div class="module-icon">📊</div>
+                        <h3>Module 4</h3>
+                        <h4>Coefficient de Proportionnalité</h4>
+                        <p>Identifie et utilise le coefficient</p>
+                        <div class="module-progress">
+                            <div class="progress-bar mini">
+                                <div class="progress-fill" data-progress="4" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                    </div>
+
+                    <div class="module-card" data-module="5">
+                        <div class="module-icon">🏆</div>
+                        <h3>Module 5</h3>
+                        <h4>Applications et Synthèse</h4>
+                        <p>Synthétise et applique toutes les méthodes</p>
+                        <div class="module-progress">
+                            <div class="progress-bar mini">
+                                <div class="progress-fill" data-progress="5" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="btn btn--outline" id="dashboardBtn">📊 Tableau de Bord</button>
+                    <button class="btn btn--outline" id="exerciserBtn">💪 Exerciseur</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 1 -->
+        <section id="module1" class="page module-page">
+            <div class="module-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>🔍 Module 1 : Découverte et Reconnaissance</h2>
+                <div class="module-progress-indicator">
+                    <div class="progress-dots">
+                        <span class="dot active" data-activity="1"></span>
+                        <span class="dot" data-activity="2"></span>
+                        <span class="dot" data-activity="3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container active" id="activity1-1">
+                <h3>🎮 Jeu : Vrai ou Faux Proportionnel ?</h3>
+                <p>Examine chaque situation et détermine si elle représente une relation proportionnelle.</p>
+                
+                <div class="game-card">
+                    <div class="situation-card">
+                        <h4>Situation :</h4>
+                        <p id="currentSituation">Un paquet de 6 yaourts coûte 3€. Deux paquets coûtent 6€. Trois paquets coûtent 9€.</p>
+                    </div>
+                    
+                    <div class="game-buttons">
+                        <button class="btn btn--primary game-btn" data-answer="true">✅ Proportionnel</button>
+                        <button class="btn btn--primary game-btn" data-answer="false">❌ Non Proportionnel</button>
+                    </div>
+                    
+                    <div class="feedback-zone" id="feedback"></div>
+                    <div class="score-display">Score : <span id="gameScore">0</span>/10</div>
+                </div>
+                
+                <button class="btn btn--secondary next-activity" data-next="activity1-2" style="display: none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity1-2">
+                <h3>🏪 Simulateur de Marché</h3>
+                <p>Tu tiens un stand au marché. Calcule les prix en fonction des quantités !</p>
+                
+                <div class="market-simulator">
+                    <div class="product-display">
+                        <h4>🍎 Pommes : 2€ le kg</h4>
+                        <div class="calculator-interface">
+                            <label>Quantité (kg) :</label>
+                            <input type="number" id="quantity" min="0.1" step="0.1" placeholder="Ex: 2.5">
+                            <button class="btn btn--primary" id="calculatePrice">Calculer le prix</button>
+                        </div>
+                        <div class="result-display" id="priceResult"></div>
+                    </div>
+                </div>
+                
+                <button class="btn btn--secondary next-activity" data-next="activity1-3">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity1-3">
+                <h3>👨‍🍳 Recettes de Cuisine</h3>
+                <p>Adapte cette recette pour différents nombres de convives !</p>
+                
+                <div class="recipe-adapter">
+                    <div class="recipe-base">
+                        <h4>Recette pour 4 personnes :</h4>
+                        <ul>
+                            <li>400g de farine</li>
+                            <li>4 œufs</li>
+                            <li>40cl de lait</li>
+                            <li>40g de beurre</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="adapter-controls">
+                        <label>Nombre de convives :</label>
+                        <select id="guestCount">
+                            <option value="2">2 personnes</option>
+                            <option value="6">6 personnes</option>
+                            <option value="8">8 personnes</option>
+                            <option value="12">12 personnes</option>
+                        </select>
+                        <button class="btn btn--primary" id="adaptRecipe">Adapter la recette</button>
+                    </div>
+                    
+                    <div class="adapted-recipe" id="adaptedRecipe"></div>
+                </div>
+                
+                <button class="btn btn--primary complete-module" data-module="1">Terminer le Module 1 🏆</button>
+            </div>
+        </section>
+
+        <!-- Tableau de bord -->
+        <section id="dashboard" class="page">
+            <div class="page-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>📊 Tableau de Bord</h2>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Tes Badges</h3>
+                    <div class="badges-container" id="badgesContainer">
+                        <div class="badge-item locked">
+                            <span class="badge-icon">🕵️</span>
+                            <span class="badge-name">Détective Proportionnel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Statistiques</h3>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-label">Modules complétés :</span>
+                            <span class="stat-value" id="completedModules">0/5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Exercices réussis :</span>
+                            <span class="stat-value" id="completedExercises">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Temps d'apprentissage :</span>
+                            <span class="stat-value" id="learningTime">0 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card full-width">
+                    <h3>Progression par Module</h3>
+                    <div class="modules-progress">
+                        <div class="module-progress-item">
+                            <span>Module 1 - Découverte</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="module1Progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="module-progress-item">
+                            <span>Module 2 - Propriétés</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="module2Progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="module-progress-item">
+                            <span>Module 3 - Passage Unité</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="module3Progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="module-progress-item">
+                            <span>Module 4 - Coefficient</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="module4Progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="module-progress-item">
+                            <span>Module 5 - Synthèse</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="module5Progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exerciseur -->
+        <section id="exerciser" class="page">
+            <div class="page-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>💪 Exerciseur</h2>
+            </div>
+
+            <div class="exerciser-container">
+                <div class="exercise-selector">
+                    <h3>Choisis ton type d'exercice :</h3>
+                    <div class="exercise-types">
+                        <button class="btn btn--outline exercise-type-btn active" data-type="recognition">Reconnaissance</button>
+                        <button class="btn btn--outline exercise-type-btn" data-type="tableaux">Tableaux</button>
+                        <button class="btn btn--outline exercise-type-btn" data-type="calculs">Calculs</button>
+                    </div>
+                </div>
+
+                <div class="exercise-area">
+                    <div class="exercise-content" id="exerciseContent">
+                        <h4>Question 1/5</h4>
+                        <p id="exerciseQuestion">Cette situation est-elle proportionnelle ?<br><br>
+                        <strong>Un livre coûte 12€, deux livres coûtent 24€, trois livres coûtent 36€.</strong></p>
+                        
+                        <div class="exercise-options">
+                            <button class="btn btn--outline option-btn" data-answer="true">Oui, proportionnelle</button>
+                            <button class="btn btn--outline option-btn" data-answer="false">Non, non proportionnelle</button>
+                        </div>
+                        
+                        <div class="exercise-feedback" id="exerciseFeedback"></div>
+                    </div>
+                    
+                    <div class="exercise-controls">
+                        <button class="btn btn--secondary" id="nextExercise" style="display: none;">Question suivante</button>
+                        <button class="btn btn--primary" id="finishExercises" style="display: none;">Terminer</button>
+                    </div>
+                </div>
+
+                <div class="exercise-results" id="exerciseResults" style="display: none;">
+                    <h3>Résultats</h3>
+                    <div class="results-summary">
+                        <div class="result-item">
+                            <span>Score :</span>
+                            <span id="finalScore">0/5</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Pourcentage :</span>
+                            <span id="finalPercent">0%</span>
+                        </div>
+                    </div>
+                    <button class="btn btn--primary" id="restartExercises">Recommencer</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notifications -->
+    <div class="notification-container" id="notifications"></div>
+
+    <!-- Confetti Canvas pour les célébrations -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="app.js"></script>
+</body>
+</html>
