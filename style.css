@@ -1104,6 +1104,19 @@ select.form-control {
   min-height: 100px;
 }
 
+/* Quiz simplifié pour les modules supplémentaires */
+.simple-quiz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.simple-quiz input {
+  text-align: center;
+  font-size: var(--font-size-lg);
+}
+
 /* Tableau de bord */
 .page-header {
   display: flex;
