@@ -107,6 +107,7 @@
                 <div class="quick-actions">
                     <button aria-label="Ouvrir le tableau de bord" class="btn btn--outline" id="dashboardBtn">📊 Tableau de Bord</button>
                     <button aria-label="Lancer l'exerciseur" class="btn btn--outline" id="exerciserBtn">💪 Exerciseur</button>
+                    <button aria-label="Voir la progression de la classe" class="btn btn--outline" id="classReportBtn">👥 Suivi Classe</button>
                 </div>
             </div>
         </section>
@@ -464,6 +465,34 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suivi de classe -->
+        <section id="classReport" class="page">
+            <div class="page-header">
+                <button aria-label="Retour à l'accueil" class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>👥 Suivi de classe</h2>
+            </div>
+
+            <div class="class-summary">
+                <div class="class-stats">
+                    <h3>Statistiques de la classe</h3>
+                    <ul>
+                        <li>Modules complétés en moyenne : <span id="classModulesAvg">0</span></li>
+                        <li>Taux de réussite moyen : <span id="classSuccessRate">0%</span></li>
+                    </ul>
+                    <button aria-label="Exporter les données CSV" class="btn btn--secondary" id="exportCSV">Exporter CSV</button>
+                </div>
+                <div class="students-list">
+                    <h3>Élèves</h3>
+                    <table id="studentsTable">
+                        <thead>
+                            <tr><th>Nom</th><th>Modules complétés</th><th>Réussite</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
             </div>
         </section>

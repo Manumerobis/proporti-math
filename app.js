@@ -18,7 +18,8 @@ class ProportiMathApp {
         this.currentExerciseIndex = 0;
         this.exerciseScore = 0;
         this.currentExerciseType = 'recognition';
-        
+        this.classData = [];
+
         this.situations = [
             {
                 text: "Un paquet de 6 yaourts coûte 3€. Deux paquets coûtent 6€. Trois paquets coûtent 9€.",
@@ -180,6 +181,8 @@ class ProportiMathApp {
             { id: 'master', name: 'Maître Proportionnel', description: 'Certification finale obtenue', icon: '👑', condition: 'allModules' }
         ];
 
+        this.loadClassData();
+
         this.init();
     }
 
@@ -234,6 +237,7 @@ class ProportiMathApp {
         // Boutons de navigation rapide
         document.getElementById('dashboardBtn')?.addEventListener('click', () => this.navigateTo('dashboard'));
         document.getElementById('exerciserBtn')?.addEventListener('click', () => this.navigateTo('exerciser'));
+        document.getElementById('classReportBtn')?.addEventListener('click', () => this.navigateTo('classReport'));
 
         // Module 1 - Jeu Vrai/Faux
         document.querySelectorAll('.game-btn').forEach(btn => {
@@ -293,6 +297,9 @@ class ProportiMathApp {
 
         // Exerciseur
         this.setupExerciserListeners();
+
+        // Export CSV
+        document.getElementById('exportCSV')?.addEventListener('click', () => this.exportClassCSV());
     }
 
     setupExerciserListeners() {
@@ -340,6 +347,8 @@ class ProportiMathApp {
             this.startExercise();
         } else if (pageId === 'dashboard') {
             this.updateDashboard();
+        } else if (pageId === 'classReport') {
+            this.renderClassReport();
         }
 
         if (page) {
@@ -790,6 +799,66 @@ class ProportiMathApp {
                 progressBar.style.width = `${progress}%`;
             }
         });
+    }
+
+    loadClassData() {
+        const stored = localStorage.getItem('classData');
+        if (stored) {
+            this.classData = JSON.parse(stored);
+        } else {
+            this.classData = [
+                { name: 'Alice', modulesCompleted: 2, successRate: 75 },
+                { name: 'Bob', modulesCompleted: 3, successRate: 82 },
+                { name: 'Charlie', modulesCompleted: 1, successRate: 60 }
+            ];
+            localStorage.setItem('classData', JSON.stringify(this.classData));
+        }
+    }
+
+    updateCurrentUserInClassData() {
+        const modules = this.userProgress.completedModules.length;
+        const successRate = modules > 0 ? Math.round((this.userProgress.exercisesCompleted / (modules * 5)) * 100) : 0;
+        const me = this.classData.find(s => s.name === 'Vous');
+        if (me) {
+            me.modulesCompleted = modules;
+            me.successRate = successRate;
+        } else {
+            this.classData.push({ name: 'Vous', modulesCompleted: modules, successRate });
+        }
+        localStorage.setItem('classData', JSON.stringify(this.classData));
+    }
+
+    renderClassReport() {
+        this.updateCurrentUserInClassData();
+        const tbody = document.querySelector('#studentsTable tbody');
+        tbody.innerHTML = '';
+        let modulesTotal = 0;
+        let successTotal = 0;
+        this.classData.forEach(student => {
+            modulesTotal += student.modulesCompleted;
+            successTotal += student.successRate;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${student.name}</td><td>${student.modulesCompleted}</td><td>${student.successRate}%</td>`;
+            tbody.appendChild(tr);
+        });
+        const count = this.classData.length || 1;
+        document.getElementById('classModulesAvg').textContent = (modulesTotal / count).toFixed(1);
+        document.getElementById('classSuccessRate').textContent = Math.round(successTotal / count) + '%';
+    }
+
+    exportClassCSV() {
+        this.updateCurrentUserInClassData();
+        const headers = ['Nom', 'Modules complétés', 'Réussite'];
+        const rows = this.classData.map(s => [s.name, s.modulesCompleted, `${s.successRate}%`]);
+        const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const date = new Date().toISOString().split('T')[0];
+        a.download = `rapport_classe_${date}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
     }
 
     showNotification(message, type = 'info') {
