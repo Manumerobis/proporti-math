@@ -199,6 +199,201 @@
             </div>
         </section>
 
+        <!-- Module 2 -->
+        <section id="module2" class="page module-page">
+            <div class="module-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>⚖️ Module 2 : Propriétés de Linéarité</h2>
+                <div class="module-progress-indicator">
+                    <div class="progress-dots">
+                        <span class="dot active" data-activity="1"></span>
+                        <span class="dot" data-activity="2"></span>
+                        <span class="dot" data-activity="3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container active" id="activity2-1">
+                <h3>➕ Addition et Proportionnalité</h3>
+                <p>Calcule la valeur manquante.</p>
+                <div class="simple-quiz">
+                    <label>4 pommes coûtent 8€. 8 pommes coûtent
+                        <input type="number" id="m2AddInput" placeholder="€">
+                    </label>
+                    <button class="btn btn--primary" id="checkM2Add">Valider</button>
+                    <div class="feedback-zone" id="m2AddFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next2-1" data-next="activity2-2" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity2-2">
+                <h3>✖️ Multiplication proportionnelle</h3>
+                <p>Complète ce rapport.</p>
+                <div class="simple-quiz">
+                    <label>5 cm → 20 g, 10 cm →
+                        <input type="number" id="m2MultInput" placeholder="g">
+                    </label>
+                    <button class="btn btn--primary" id="checkM2Mult">Valider</button>
+                    <div class="feedback-zone" id="m2MultFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next2-2" data-next="activity2-3" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity2-3">
+                <h3>✅ Situation proportionnelle ?</h3>
+                <p>2 kg → 5€, 4 kg → 10€</p>
+                <div class="game-buttons">
+                    <button class="btn btn--primary m2-q-btn" data-answer="true">Oui</button>
+                    <button class="btn btn--primary m2-q-btn" data-answer="false">Non</button>
+                </div>
+                <div class="feedback-zone" id="m2QFeedback"></div>
+                <button class="btn btn--primary complete-module" id="m2Complete" data-module="2" style="display:none;">Terminer le Module 2 🏆</button>
+            </div>
+        </section>
+
+        <!-- Module 3 -->
+        <section id="module3" class="page module-page">
+            <div class="module-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>🎯 Module 3 : Passage par l'Unité</h2>
+                <div class="module-progress-indicator">
+                    <div class="progress-dots">
+                        <span class="dot active" data-activity="1"></span>
+                        <span class="dot" data-activity="2"></span>
+                        <span class="dot" data-activity="3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container active" id="activity3-1">
+                <h3>Prix unitaire</h3>
+                <p>12€ pour 3 kg. Prix pour 1 kg ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m3UnitInput" placeholder="€">
+                    <button class="btn btn--primary" id="checkM3Unit">Valider</button>
+                    <div class="feedback-zone" id="m3UnitFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next3-1" data-next="activity3-2" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity3-2">
+                <h3>Application</h3>
+                <p>Si le prix unitaire est 4€/kg, quel est le prix pour 7 kg ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m3PriceInput" placeholder="€">
+                    <button class="btn btn--primary" id="checkM3Price">Valider</button>
+                    <div class="feedback-zone" id="m3PriceFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next3-2" data-next="activity3-3" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity3-3">
+                <h3>Validation</h3>
+                <p>3 articles coûtent 15€, 6 articles coûtent 30€. Est-ce proportionnel ?</p>
+                <div class="game-buttons">
+                    <button class="btn btn--primary m3-q-btn" data-answer="true">Oui</button>
+                    <button class="btn btn--primary m3-q-btn" data-answer="false">Non</button>
+                </div>
+                <div class="feedback-zone" id="m3QFeedback"></div>
+                <button class="btn btn--primary complete-module" id="m3Complete" data-module="3" style="display:none;">Terminer le Module 3 🏆</button>
+            </div>
+        </section>
+
+        <!-- Module 4 -->
+        <section id="module4" class="page module-page">
+            <div class="module-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>📊 Module 4 : Coefficient de Proportionnalité</h2>
+                <div class="module-progress-indicator">
+                    <div class="progress-dots">
+                        <span class="dot active" data-activity="1"></span>
+                        <span class="dot" data-activity="2"></span>
+                        <span class="dot" data-activity="3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container active" id="activity4-1">
+                <h3>Détermination du coefficient</h3>
+                <p>6 → 18. Quel est le coefficient ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m4CoefInput" placeholder="coef">
+                    <button class="btn btn--primary" id="checkM4Coef">Valider</button>
+                    <div class="feedback-zone" id="m4CoefFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next4-1" data-next="activity4-2" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity4-2">
+                <h3>Utilisation du coefficient</h3>
+                <p>Avec ce coefficient, que vaut 9 ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m4ApplyInput" placeholder="valeur">
+                    <button class="btn btn--primary" id="checkM4Apply">Valider</button>
+                    <div class="feedback-zone" id="m4ApplyFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next4-2" data-next="activity4-3" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity4-3">
+                <h3>Vérification</h3>
+                <p>8 × 2,5 = 20. Est-ce proportionnel ?</p>
+                <div class="game-buttons">
+                    <button class="btn btn--primary m4-q-btn" data-answer="true">Oui</button>
+                    <button class="btn btn--primary m4-q-btn" data-answer="false">Non</button>
+                </div>
+                <div class="feedback-zone" id="m4QFeedback"></div>
+                <button class="btn btn--primary complete-module" id="m4Complete" data-module="4" style="display:none;">Terminer le Module 4 🏆</button>
+            </div>
+        </section>
+
+        <!-- Module 5 -->
+        <section id="module5" class="page module-page">
+            <div class="module-header">
+                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <h2>🏆 Module 5 : Applications et Synthèse</h2>
+                <div class="module-progress-indicator">
+                    <div class="progress-dots">
+                        <span class="dot active" data-activity="1"></span>
+                        <span class="dot" data-activity="2"></span>
+                        <span class="dot" data-activity="3"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-container active" id="activity5-1">
+                <h3>Application directe</h3>
+                <p>3 articles coûtent 12€. Combien coûtent 5 articles ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m5FirstInput" placeholder="€">
+                    <button class="btn btn--primary" id="checkM5First">Valider</button>
+                    <div class="feedback-zone" id="m5FirstFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next5-1" data-next="activity5-2" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity5-2">
+                <h3>Rappels</h3>
+                <p>6 → 9. Quelle valeur pour 10 ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m5SecondInput" placeholder="valeur">
+                    <button class="btn btn--primary" id="checkM5Second">Valider</button>
+                    <div class="feedback-zone" id="m5SecondFeedback"></div>
+                </div>
+                <button class="btn btn--secondary next-activity" id="next5-2" data-next="activity5-3" style="display:none;">Activité suivante →</button>
+            </div>
+
+            <div class="activity-container" id="activity5-3">
+                <h3>Question finale</h3>
+                <p>Une voiture roule 80 km en 1h. Combien en 3h ?</p>
+                <div class="simple-quiz">
+                    <input type="number" id="m5ThirdInput" placeholder="km">
+                    <button class="btn btn--primary" id="checkM5Third">Valider</button>
+                    <div class="feedback-zone" id="m5ThirdFeedback"></div>
+                </div>
+                <button class="btn btn--primary complete-module" id="m5Complete" data-module="5" style="display:none;">Terminer le Module 5 🏆</button>
+            </div>
+        </section>
         <!-- Tableau de bord -->
         <section id="dashboard" class="page">
             <div class="page-header">

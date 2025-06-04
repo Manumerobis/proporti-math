@@ -249,6 +249,32 @@ class ProportionMathApp {
         // Module 1 - Adaptateur de recettes
         document.getElementById('adaptRecipe')?.addEventListener('click', () => this.adaptRecipe());
 
+        // Module 2
+        document.getElementById('checkM2Add')?.addEventListener('click', () => this.checkM2Add());
+        document.getElementById('checkM2Mult')?.addEventListener('click', () => this.checkM2Mult());
+        document.querySelectorAll('.m2-q-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.checkM2Question(e.target.getAttribute('data-answer') === 'true'));
+        });
+
+        // Module 3
+        document.getElementById('checkM3Unit')?.addEventListener('click', () => this.checkM3Unit());
+        document.getElementById('checkM3Price')?.addEventListener('click', () => this.checkM3Price());
+        document.querySelectorAll('.m3-q-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.checkM3Question(e.target.getAttribute('data-answer') === 'true'));
+        });
+
+        // Module 4
+        document.getElementById('checkM4Coef')?.addEventListener('click', () => this.checkM4Coef());
+        document.getElementById('checkM4Apply')?.addEventListener('click', () => this.checkM4Apply());
+        document.querySelectorAll('.m4-q-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.checkM4Question(e.target.getAttribute('data-answer') === 'true'));
+        });
+
+        // Module 5
+        document.getElementById('checkM5First')?.addEventListener('click', () => this.checkM5First());
+        document.getElementById('checkM5Second')?.addEventListener('click', () => this.checkM5Second());
+        document.getElementById('checkM5Third')?.addEventListener('click', () => this.checkM5Third());
+
         // Activités suivantes
         document.querySelectorAll('.next-activity').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -302,6 +328,14 @@ class ProportionMathApp {
         if (pageId === 'module1') {
             this.showActivity('activity1-1');
             this.initializeGame();
+        } else if (pageId === 'module2') {
+            this.showActivity('activity2-1');
+        } else if (pageId === 'module3') {
+            this.showActivity('activity3-1');
+        } else if (pageId === 'module4') {
+            this.showActivity('activity4-1');
+        } else if (pageId === 'module5') {
+            this.showActivity('activity5-1');
         } else if (pageId === 'exerciser') {
             this.startExercise();
         } else if (pageId === 'dashboard') {
@@ -458,6 +492,89 @@ class ProportionMathApp {
         
         this.addXP(15);
         this.updateModuleProgress(1, 100);
+    }
+
+    // Utilitaire générique pour vérifier une réponse numérique
+    checkNumericAnswer(inputId, feedbackId, expected, nextBtn, moduleId, progress, xp) {
+        const value = parseFloat(document.getElementById(inputId).value);
+        const feedback = document.getElementById(feedbackId);
+
+        if (!isNaN(value) && Math.abs(value - expected) < 0.01) {
+            feedback.className = 'feedback-zone correct';
+            feedback.textContent = 'Correct !';
+            if (nextBtn) document.getElementById(nextBtn).style.display = 'block';
+            this.addXP(xp);
+            this.updateModuleProgress(moduleId, progress);
+        } else {
+            feedback.className = 'feedback-zone incorrect';
+            feedback.textContent = 'Essaie encore.';
+        }
+    }
+
+    checkBinaryAnswer(answer, expected, feedbackId, completeBtn, moduleId, progress, xp) {
+        const feedback = document.getElementById(feedbackId);
+        if (answer === expected) {
+            feedback.className = 'feedback-zone correct';
+            feedback.textContent = 'Bravo !';
+            if (completeBtn) document.getElementById(completeBtn).style.display = 'block';
+            this.addXP(xp);
+            this.updateModuleProgress(moduleId, progress);
+        } else {
+            feedback.className = 'feedback-zone incorrect';
+            feedback.textContent = 'Réponse incorrecte.';
+        }
+    }
+
+    // Module 2
+    checkM2Add() {
+        this.checkNumericAnswer('m2AddInput', 'm2AddFeedback', 16, 'next2-1', 2, 33, 10);
+    }
+
+    checkM2Mult() {
+        this.checkNumericAnswer('m2MultInput', 'm2MultFeedback', 40, 'next2-2', 2, 66, 10);
+    }
+
+    checkM2Question(answer) {
+        this.checkBinaryAnswer(answer, true, 'm2QFeedback', 'm2Complete', 2, 100, 15);
+    }
+
+    // Module 3
+    checkM3Unit() {
+        this.checkNumericAnswer('m3UnitInput', 'm3UnitFeedback', 4, 'next3-1', 3, 33, 10);
+    }
+
+    checkM3Price() {
+        this.checkNumericAnswer('m3PriceInput', 'm3PriceFeedback', 28, 'next3-2', 3, 66, 10);
+    }
+
+    checkM3Question(answer) {
+        this.checkBinaryAnswer(answer, true, 'm3QFeedback', 'm3Complete', 3, 100, 15);
+    }
+
+    // Module 4
+    checkM4Coef() {
+        this.checkNumericAnswer('m4CoefInput', 'm4CoefFeedback', 3, 'next4-1', 4, 33, 10);
+    }
+
+    checkM4Apply() {
+        this.checkNumericAnswer('m4ApplyInput', 'm4ApplyFeedback', 27, 'next4-2', 4, 66, 10);
+    }
+
+    checkM4Question(answer) {
+        this.checkBinaryAnswer(answer, true, 'm4QFeedback', 'm4Complete', 4, 100, 15);
+    }
+
+    // Module 5
+    checkM5First() {
+        this.checkNumericAnswer('m5FirstInput', 'm5FirstFeedback', 20, 'next5-1', 5, 33, 10);
+    }
+
+    checkM5Second() {
+        this.checkNumericAnswer('m5SecondInput', 'm5SecondFeedback', 15, 'next5-2', 5, 66, 10);
+    }
+
+    checkM5Third() {
+        this.checkNumericAnswer('m5ThirdInput', 'm5ThirdFeedback', 240, 'm5Complete', 5, 100, 15);
     }
 
     completeModule(moduleId) {
