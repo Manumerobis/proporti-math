@@ -1,5 +1,5 @@
-// ProportionMath - Application d'apprentissage de la proportionnalité
-class ProportionMathApp {
+// ProportiMath - Application d'apprentissage de la proportionnalité
+class ProportiMathApp {
     constructor() {
         this.currentPage = 'homepage';
         this.userProgress = {
@@ -186,7 +186,7 @@ class ProportionMathApp {
     init() {
         this.setupEventListeners();
         this.updateUI();
-        this.showNotification('Bienvenue dans ProportionMath ! 🎉', 'success');
+        this.showNotification('Bienvenue dans ProportiMath ! 🎉', 'success');
     }
 
     setupEventListeners() {
@@ -704,5 +704,5 @@ class ProportionMathApp {
 
 // Initialiser l'application
 document.addEventListener('DOMContentLoaded', () => {
-    new ProportionMathApp();
+    new ProportiMathApp();
 });
