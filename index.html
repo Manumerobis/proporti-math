@@ -30,7 +30,7 @@
                 <div class="progress-overview">
                     <h3>Ta progression globale</h3>
                     <div class="progress-bar-container">
-                        <div class="progress-bar">
+                        <div class="progress-bar" role="progressbar" aria-label="Progression globale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                             <div class="progress-fill" id="globalProgress" style="width: 0%"></div>
                         </div>
                         <span class="progress-text"><span id="progressPercent">0</span>% complété</span>
@@ -48,7 +48,7 @@
                                 <div class="progress-fill" data-progress="1" style="width: 0%"></div>
                             </div>
                         </div>
-                        <button class="btn btn--primary">Commencer</button>
+                        <button aria-label="Ouvrir le Module 1" class="btn btn--primary">Commencer</button>
                     </div>
 
                     <div class="module-card" data-module="2">
@@ -61,7 +61,7 @@
                                 <div class="progress-fill" data-progress="2" style="width: 0%"></div>
                             </div>
                         </div>
-                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                        <button aria-label="Module 2 verrouillé" class="btn btn--secondary" disabled>Verrouillé</button>
                     </div>
 
                     <div class="module-card" data-module="3">
@@ -74,7 +74,7 @@
                                 <div class="progress-fill" data-progress="3" style="width: 0%"></div>
                             </div>
                         </div>
-                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                        <button aria-label="Module 3 verrouillé" class="btn btn--secondary" disabled>Verrouillé</button>
                     </div>
 
                     <div class="module-card" data-module="4">
@@ -87,7 +87,7 @@
                                 <div class="progress-fill" data-progress="4" style="width: 0%"></div>
                             </div>
                         </div>
-                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                        <button aria-label="Module 4 verrouillé" class="btn btn--secondary" disabled>Verrouillé</button>
                     </div>
 
                     <div class="module-card" data-module="5">
@@ -100,13 +100,13 @@
                                 <div class="progress-fill" data-progress="5" style="width: 0%"></div>
                             </div>
                         </div>
-                        <button class="btn btn--secondary" disabled>Verrouillé</button>
+                        <button aria-label="Module 5 verrouillé" class="btn btn--secondary" disabled>Verrouillé</button>
                     </div>
                 </div>
 
                 <div class="quick-actions">
-                    <button class="btn btn--outline" id="dashboardBtn">📊 Tableau de Bord</button>
-                    <button class="btn btn--outline" id="exerciserBtn">💪 Exerciseur</button>
+                    <button aria-label="Ouvrir le tableau de bord" class="btn btn--outline" id="dashboardBtn">📊 Tableau de Bord</button>
+                    <button aria-label="Lancer l'exerciseur" class="btn btn--outline" id="exerciserBtn">💪 Exerciseur</button>
                 </div>
             </div>
         </section>
@@ -114,13 +114,13 @@
         <!-- Module 1 -->
         <section id="module1" class="page module-page">
             <div class="module-header">
-                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <button aria-label="Retour à l'accueil" class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
                 <h2>🔍 Module 1 : Découverte et Reconnaissance</h2>
                 <div class="module-progress-indicator">
                     <div class="progress-dots">
-                        <span class="dot active" data-activity="1"></span>
-                        <span class="dot" data-activity="2"></span>
-                        <span class="dot" data-activity="3"></span>
+                        <span aria-label="Activité 1" class="dot active" data-activity="1"></span>
+                        <span aria-label="Activité 2" class="dot" data-activity="2"></span>
+                        <span aria-label="Activité 3" class="dot" data-activity="3"></span>
                     </div>
                 </div>
             </div>
@@ -136,15 +136,15 @@
                     </div>
                     
                     <div class="game-buttons">
-                        <button class="btn btn--primary game-btn" data-answer="true">✅ Proportionnel</button>
-                        <button class="btn btn--primary game-btn" data-answer="false">❌ Non Proportionnel</button>
+                        <button aria-label="Répondre proportionnel" class="btn btn--primary game-btn" data-answer="true">✅ Proportionnel</button>
+                        <button aria-label="Répondre non proportionnel" class="btn btn--primary game-btn" data-answer="false">❌ Non Proportionnel</button>
                     </div>
                     
                     <div class="feedback-zone" id="feedback"></div>
                     <div class="score-display">Score : <span id="gameScore">0</span>/10</div>
                 </div>
                 
-                <button class="btn btn--secondary next-activity" data-next="activity1-2" style="display: none;">Activité suivante →</button>
+                <button aria-label="Activité suivante" class="btn btn--secondary next-activity" data-next="activity1-2" style="display: none;">Activité suivante →</button>
             </div>
 
             <div class="activity-container" id="activity1-2">
@@ -157,13 +157,13 @@
                         <div class="calculator-interface">
                             <label>Quantité (kg) :</label>
                             <input type="number" id="quantity" min="0.1" step="0.1" placeholder="Ex: 2.5">
-                            <button class="btn btn--primary" id="calculatePrice">Calculer le prix</button>
+                            <button aria-label="Calculer le prix" class="btn btn--primary" id="calculatePrice">Calculer le prix</button>
                         </div>
                         <div class="result-display" id="priceResult"></div>
                     </div>
                 </div>
                 
-                <button class="btn btn--secondary next-activity" data-next="activity1-3">Activité suivante →</button>
+                <button aria-label="Activité suivante" class="btn btn--secondary next-activity" data-next="activity1-3">Activité suivante →</button>
             </div>
 
             <div class="activity-container" id="activity1-3">
@@ -189,20 +189,20 @@
                             <option value="8">8 personnes</option>
                             <option value="12">12 personnes</option>
                         </select>
-                        <button class="btn btn--primary" id="adaptRecipe">Adapter la recette</button>
+                        <button aria-label="Adapter la recette" class="btn btn--primary" id="adaptRecipe">Adapter la recette</button>
                     </div>
                     
                     <div class="adapted-recipe" id="adaptedRecipe"></div>
                 </div>
                 
-                <button class="btn btn--primary complete-module" data-module="1">Terminer le Module 1 🏆</button>
+                <button aria-label="Terminer le Module 1" class="btn btn--primary complete-module" data-module="1">Terminer le Module 1 🏆</button>
             </div>
         </section>
 
         <!-- Tableau de bord -->
         <section id="dashboard" class="page">
             <div class="page-header">
-                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <button aria-label="Retour à l'accueil" class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
                 <h2>📊 Tableau de Bord</h2>
             </div>
 
@@ -240,31 +240,31 @@
                     <div class="modules-progress">
                         <div class="module-progress-item">
                             <span>Module 1 - Découverte</span>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-label="Module 1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                 <div class="progress-fill" id="module1Progress" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="module-progress-item">
                             <span>Module 2 - Propriétés</span>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-label="Module 2" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                 <div class="progress-fill" id="module2Progress" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="module-progress-item">
                             <span>Module 3 - Passage Unité</span>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-label="Module 3" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                 <div class="progress-fill" id="module3Progress" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="module-progress-item">
                             <span>Module 4 - Coefficient</span>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-label="Module 4" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                 <div class="progress-fill" id="module4Progress" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="module-progress-item">
                             <span>Module 5 - Synthèse</span>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-label="Module 5" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                 <div class="progress-fill" id="module5Progress" style="width: 0%"></div>
                             </div>
                         </div>
@@ -276,7 +276,7 @@
         <!-- Exerciseur -->
         <section id="exerciser" class="page">
             <div class="page-header">
-                <button class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
+                <button aria-label="Retour à l'accueil" class="btn btn--outline back-btn" data-target="homepage">← Retour</button>
                 <h2>💪 Exerciseur</h2>
             </div>
 
@@ -284,9 +284,9 @@
                 <div class="exercise-selector">
                     <h3>Choisis ton type d'exercice :</h3>
                     <div class="exercise-types">
-                        <button class="btn btn--outline exercise-type-btn active" data-type="recognition">Reconnaissance</button>
-                        <button class="btn btn--outline exercise-type-btn" data-type="tableaux">Tableaux</button>
-                        <button class="btn btn--outline exercise-type-btn" data-type="calculs">Calculs</button>
+                        <button aria-label="Exercices de reconnaissance" class="btn btn--outline exercise-type-btn active" data-type="recognition">Reconnaissance</button>
+                        <button aria-label="Exercices de tableaux" class="btn btn--outline exercise-type-btn" data-type="tableaux">Tableaux</button>
+                        <button aria-label="Exercices de calculs" class="btn btn--outline exercise-type-btn" data-type="calculs">Calculs</button>
                     </div>
                 </div>
 
@@ -297,16 +297,16 @@
                         <strong>Un livre coûte 12€, deux livres coûtent 24€, trois livres coûtent 36€.</strong></p>
                         
                         <div class="exercise-options">
-                            <button class="btn btn--outline option-btn" data-answer="true">Oui, proportionnelle</button>
-                            <button class="btn btn--outline option-btn" data-answer="false">Non, non proportionnelle</button>
+                            <button aria-label="Réponse oui" class="btn btn--outline option-btn" data-answer="true">Oui, proportionnelle</button>
+                            <button aria-label="Réponse non" class="btn btn--outline option-btn" data-answer="false">Non, non proportionnelle</button>
                         </div>
                         
                         <div class="exercise-feedback" id="exerciseFeedback"></div>
                     </div>
                     
                     <div class="exercise-controls">
-                        <button class="btn btn--secondary" id="nextExercise" style="display: none;">Question suivante</button>
-                        <button class="btn btn--primary" id="finishExercises" style="display: none;">Terminer</button>
+                        <button aria-label="Question suivante" class="btn btn--secondary" id="nextExercise" style="display: none;">Question suivante</button>
+                        <button aria-label="Terminer les exercices" class="btn btn--primary" id="finishExercises" style="display: none;">Terminer</button>
                     </div>
                 </div>
 
@@ -322,7 +322,7 @@
                             <span id="finalPercent">0%</span>
                         </div>
                     </div>
-                    <button class="btn btn--primary" id="restartExercises">Recommencer</button>
+                    <button aria-label="Recommencer les exercices" class="btn btn--primary" id="restartExercises">Recommencer</button>
                 </div>
             </div>
         </section>
